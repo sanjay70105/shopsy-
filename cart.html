@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="jquery.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Great+Vibes&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Matemasie&family=Playball&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Extra+Condensed:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .welcome-message {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .produc {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            position: relative;
+            width: 200px;
+        }
+        .produc img {
+            max-width: 100%;
+            height: auto;
+        }
+
+.cart-container {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+.user-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.produc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.produc img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    margin-top: 10px;
+}
+
+#checkout-btn {
+    background-color: #34c759;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#checkout-btn:hover {
+    background-color: #28a745;
+}
+
+#welcome-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+        .delete {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: red;
+            display: none;
+        }
+        .produc:hover .delete {
+            display: block;
+        }
+        .avatar-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .avatar-option {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .avatar-option:hover {
+            border-color: #007bff;
+        }
+        .card-items {
+            width: 200px;
+        }
+        .containe {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-checkout {
+            margin-top: 20px;
+        }
+        .product {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: fade-in-out 3s forwards;
+}
+
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="parent2">
+       <center> <div id="welcome-message" class="text-center my-4"></div></center>
+      
+        <center>
+            <div class="cls">
+                <div id="profile-photo-section" style="margin-top:30px; margin-bottom: 30px;">
+                    <img id="profile-photo" src="profile.png" alt="Profile Photo" style="width: 100px; height: 100px; cursor: pointer;">
+                </div>
+                <div class="icon">
+                    <img id="click" src="click.gif" alt="Click Animation" style="width:70px;">
+                </div>
+            </div>
+            <div id="avatar-modal" style="display: none;">
+                <div class="avatar-list">
+                    <img src="profile1.png" class="avatar-option" data-avatar="profile1.png" alt="Avatar 1">
+                    <img src="profile2.jpg" class="avatar-option" data-avatar="profile2.jpg" alt="Avatar 2">
+                    <img src="prodile3.png" class="avatar-option" data-avatar="prodile3.png" alt="Avatar 3">
+                    <img src="profile4.png" class="avatar-option" data-avatar="profile4.png" alt="Avatar 4">
+                    <img src="profile5.png" class="avatar-option" data-avatar="profile5.png" alt="Avatar 5">
+                    <img src="profile6.png" class="avatar-option" data-avatar="profile6.png" alt="Avatar 6">
+                    <img src="profile7.jpg" class="avatar-option" data-avatar="profile7.jpg" alt="Avatar 7">
+                    <img src="profile8.jpg" class="avatar-option" data-avatar="profile8.jpg" alt="Avatar 8">
+                    <img src="profile9.jpg" class="avatar-option" data-avatar="profile9.jpg" alt="Avatar 9">
+                </div>
+            </div>
+       
+        
+        <h2 style="margin-top:140px;margin-left:30px; margin-bottom:30px;color: aliceblue;">Total Amount: <span id="total-amount"></span></h2>
+    </center>
+        <center>
+            <h1>Your Cart</h1>
+            <h2 id="guys" style="margin-top:40px;"></h2>
+        </center>
+        
+        <div class="containe" style="margin-top:60px;">
+            <div id="cart-items" ></div> 
+        </div>
+        <center>
+        <div class="checkout-section">
+            <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+        </div>
+    </center>
+        
+    </div>
+    
+    <script src="cart.js"></script>
+</body>
+</html>
